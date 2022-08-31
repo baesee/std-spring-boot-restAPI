@@ -8,8 +8,10 @@ class EventTest {
 
     @Test
     public void builder(){
-        Event event = Event.builder().name("인프런 레스트 api").description("디스크립션")
+        String name = "인프런 레스트 api";
+        Event event = Event.builder().name(name).description("디스크립션")
                 .build();
+        assertThat(event.getName()).isEqualTo(name);
         assertThat(event).isNotNull();
     }
 
