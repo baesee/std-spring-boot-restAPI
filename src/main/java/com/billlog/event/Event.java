@@ -3,6 +3,7 @@ package com.billlog.event;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Builder
@@ -10,8 +11,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter @Setter
 @EqualsAndHashCode(of = "id")
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private String description;
@@ -20,9 +24,11 @@ public class Event {
     private LocalDateTime beginEventDateTime;
     private LocalDateTime endEventDateTime;
     private String location; // (optional) 이게 없으면 온라인 모임 private int basePrice; // (optional)
+    private int basePrice; // (optional)
     private int maxPrice; // (optional)
     private int limitOfEnrollment;
     private Boolean offline;
     private Boolean free;
+    @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
 }
